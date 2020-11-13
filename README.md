@@ -1,5 +1,10 @@
 ### Productivity Manager
 
+# Dependencies
+
+python-wnck
+pynput
+
 # Features
 
 Log keypresses/hour (Started)
