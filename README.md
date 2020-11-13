@@ -3,6 +3,7 @@
 # Dependencies
 
 python-wnck
+
 pynput
 
 # Features
