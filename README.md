@@ -10,6 +10,8 @@ pynput
 
 Log keypresses/hour (Started)
 
+Hourly summary (template)
+
 Log window active time (TODO)
 
 Log processes running (TODO)
