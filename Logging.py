@@ -5,7 +5,7 @@ from threading import Thread
 from datetime import datetime
 
 
-def func():
+def appendTimeCount():
     global count
     with open("key_log", 'a') as file1: 
         file1.write(datetime.now().strftime('%H:%M') +" "+ str(count) + "\n") 
@@ -38,20 +38,21 @@ def clocker():
     global count
     count = 0
     
-    Thread(target = func).start()
+    Thread(target = appendTimeCount).start()
     while True:
         sleep(60) #hour
         if datetime.now().minute == 0:
-            Thread(target = func).start()
-        if datetime.now().hour == 0:
-            with open("key_log", 'a') as file1: 
-                file1.write("\n" + datetime.today().strftime('%Y-%m-%d') + "\n") 
+            Thread(target = appendTimeCount).start()
+            if datetime.now().hour == 0:
+                with open("key_log", 'a') as file1: 
+                    file1.write("\n" + datetime.today().strftime('%Y-%m-%d') + "\n") 
             
     
 
 def main():
     with open("key_log", 'a') as file1: 
         file1.write("\n" + datetime.today().strftime('%Y-%m-%d') + "\n") 
+    Thread(target = appendTimeCount).start()
     t1 = Thread(target=clocker) 
     t2 = Thread(target=listeners) 
     t1.start()
